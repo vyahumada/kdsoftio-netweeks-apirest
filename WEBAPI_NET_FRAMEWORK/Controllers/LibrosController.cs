@@ -42,7 +42,7 @@ namespace WEBAPI_NET_FRAMEWORK.Controllers
 
             if (libro == null)
                 return BadRequest("No se encontro libro con el id indicado");
-
+           
 
             var res = new LibroVM
             {
