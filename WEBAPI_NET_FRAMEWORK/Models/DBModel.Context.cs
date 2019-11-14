@@ -25,7 +25,7 @@ namespace WEBAPI_NET_FRAMEWORK.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Categoria> Categoria { get; set; }
+        public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Libros> Libros { get; set; }
     }
 }

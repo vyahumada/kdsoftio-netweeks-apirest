@@ -21,6 +21,6 @@ namespace WEBAPI_NET_FRAMEWORK.Models
         public string Edicion { get; set; }
         public Nullable<int> Id_Categoria { get; set; }
     
-        public virtual Categoria Categoria { get; set; }
+        public virtual Categorias Categorias { get; set; }
     }
 }

@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Test_WEBAPIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Categoria">
+        <EntityType Name="Categorias">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -25,10 +25,10 @@
           <Property Name="Id_Categoria" Type="int" />
         </EntityType>
         <Association Name="FK_Libros_Categoria">
-          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
           <End Role="Libros" Type="Self.Libros" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categoria">
+            <Principal Role="Categorias">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Libros">
@@ -37,10 +37,10 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Test_WEBAPIModelStoreContainer">
-          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Libros" EntityType="Self.Libros" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Libros_Categoria" Association="Self.FK_Libros_Categoria">
-            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Libros" EntitySet="Libros" />
           </AssociationSet>
         </EntityContainer>
@@ -49,21 +49,21 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Test_WEBAPIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Test_WEBAPIEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Categoria" EntityType="Test_WEBAPIModel.Categoria" />
+          <EntitySet Name="Categorias" EntityType="Test_WEBAPIModel.Categorias" />
           <EntitySet Name="Libros" EntityType="Test_WEBAPIModel.Libros" />
           <AssociationSet Name="FK_Libros_Categoria" Association="Test_WEBAPIModel.FK_Libros_Categoria">
-            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Libros" EntitySet="Libros" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Categoria">
+        <EntityType Name="Categorias">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Habilitada" Type="Boolean" />
-          <NavigationProperty Name="Libros" Relationship="Test_WEBAPIModel.FK_Libros_Categoria" FromRole="Categoria" ToRole="Libros" />
+          <NavigationProperty Name="Libros" Relationship="Test_WEBAPIModel.FK_Libros_Categoria" FromRole="Categorias" ToRole="Libros" />
         </EntityType>
         <EntityType Name="Libros">
           <Key>
@@ -75,13 +75,13 @@
           <Property Name="EnStock" Type="Boolean" />
           <Property Name="Edicion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Id_Categoria" Type="Int32" />
-          <NavigationProperty Name="Categoria" Relationship="Test_WEBAPIModel.FK_Libros_Categoria" FromRole="Libros" ToRole="Categoria" />
+          <NavigationProperty Name="Categorias" Relationship="Test_WEBAPIModel.FK_Libros_Categoria" FromRole="Libros" ToRole="Categorias" />
         </EntityType>
         <Association Name="FK_Libros_Categoria">
-          <End Type="Test_WEBAPIModel.Categoria" Role="Categoria" Multiplicity="0..1" />
+          <End Type="Test_WEBAPIModel.Categorias" Role="Categorias" Multiplicity="0..1" />
           <End Type="Test_WEBAPIModel.Libros" Role="Libros" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categoria">
+            <Principal Role="Categorias">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Libros">
@@ -95,9 +95,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Test_WEBAPIModelStoreContainer" CdmEntityContainer="Test_WEBAPIEntities">
-          <EntitySetMapping Name="Categoria">
-            <EntityTypeMapping TypeName="Test_WEBAPIModel.Categoria">
-              <MappingFragment StoreEntitySet="Categoria">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="Test_WEBAPIModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
                 <ScalarProperty Name="Habilitada" ColumnName="Habilitada" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

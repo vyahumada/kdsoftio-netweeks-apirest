@@ -12,10 +12,10 @@ namespace WEBAPI_NET_FRAMEWORK.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Categoria
+    public partial class Categorias
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Categoria()
+        public Categorias()
         {
             this.Libros = new HashSet<Libros>();
         }

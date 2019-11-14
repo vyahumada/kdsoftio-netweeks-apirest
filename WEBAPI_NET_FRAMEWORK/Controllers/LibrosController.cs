@@ -24,43 +24,43 @@ namespace WEBAPI_NET_FRAMEWORK.Controllers
                 Id_Categoria = p.Id_Categoria,
                 Categoria = new CategoriaVM
                 {
-                    Id = p.Categoria.Id,
-                    Nombre = p.Categoria.Nombre,
+                    Id = p.Categorias.Id,
+                    Nombre = p.Categorias.Nombre,
                 }
             }).ToList();
-            
-            return Ok(res);
-        }
-
-        [HttpGet]
-        [Route("ObtenerLibroxId")]
-        public IHttpActionResult ObtenerLibroxId(int id)
-        {
-            var db = new Models.Test_WEBAPIEntities();
-
-            var libro = db.Libros.FirstOrDefault(q => q.Id == id);
-
-            if (libro == null)
-                return BadRequest("No se encontro libro con el id indicado");
-           
-
-            var res = new LibroVM
-            {
-                Id = libro.Id,
-                Nombre = libro.Nombre,
-                FechaEdicion = libro.FechaEdicion,
-                Edicion = libro.Edicion,
-                EnStock = libro.EnStock,
-                Id_Categoria = libro.Id_Categoria,
-                Categoria = new CategoriaVM
-                {
-                    Id = libro.Categoria.Id,
-                    Nombre = libro.Categoria.Nombre,
-                }
-            };
 
             return Ok(res);
         }
+
+        //[HttpGet]
+        //[Route("ObtenerLibroxId")]
+        //public IHttpActionResult ObtenerLibroxId(int id)
+        //{
+        //    var db = new Models.Test_WEBAPIEntities();
+
+        //    var libro = db.Libros.FirstOrDefault(q => q.Id == id);
+
+        //    if (libro == null)
+        //        return BadRequest("No se encontro libro con el id indicado");
+
+
+        //    var res = new LibroVM
+        //    {
+        //        Id = libro.Id,
+        //        Nombre = libro.Nombre,
+        //        FechaEdicion = libro.FechaEdicion,
+        //        Edicion = libro.Edicion,
+        //        EnStock = libro.EnStock,
+        //        Id_Categoria = libro.Id_Categoria,
+        //        Categoria = new CategoriaVM
+        //        {
+        //            Id = libro.Categorias.Id,
+        //            Nombre = libro.Categorias.Nombre,
+        //        }
+        //    };
+
+        //    return Ok(res);
+        //}
 
         [HttpPost]
         public IHttpActionResult CrearLibro(LibroVM libro)
@@ -88,51 +88,51 @@ namespace WEBAPI_NET_FRAMEWORK.Controllers
         }
 
 
-        [HttpPut]
-        public IHttpActionResult ModificarLibro(int id, [FromBody]LibroVM libro)
-        {          
+        //[HttpPut]
+        //public IHttpActionResult ModificarLibro(int id, [FromBody]LibroVM libro)
+        //{          
 
-            var db = new Models.Test_WEBAPIEntities();
+        //    var db = new Models.Test_WEBAPIEntities();
 
-            var libroModificado = db.Libros.FirstOrDefault(p => p.Id == id);
+        //    var libroModificado = db.Libros.FirstOrDefault(p => p.Id == id);
 
 
-            if (libro == null)
-                return BadRequest("No se encontro libro con el id indicado");
+        //    if (libro == null)
+        //        return BadRequest("No se encontro libro con el id indicado");
 
-            libroModificado.Id = libro.Id;
-            libroModificado.Nombre = libro.Nombre;
-            libroModificado.FechaEdicion = libro.FechaEdicion;
-            libroModificado.Edicion = libro.Edicion;
-            libroModificado.EnStock = libro.EnStock;
-            libroModificado.Id_Categoria = libro.Id_Categoria;
+        //    libroModificado.Id = libro.Id;
+        //    libroModificado.Nombre = libro.Nombre;
+        //    libroModificado.FechaEdicion = libro.FechaEdicion;
+        //    libroModificado.Edicion = libro.Edicion;
+        //    libroModificado.EnStock = libro.EnStock;
+        //    libroModificado.Id_Categoria = libro.Id_Categoria;
 
-            var res = db.SaveChanges();
+        //    var res = db.SaveChanges();
 
-            if (res > 0)
-                return Ok(libro);
-            return BadRequest("No se pudo crear el elemento");
-        }
+        //    if (res > 0)
+        //        return Ok(libro);
+        //    return BadRequest("No se pudo crear el elemento");
+        //}
 
-        [HttpDelete]
-        public IHttpActionResult EliminarLibro(int id)
-        {
-            var db = new Models.Test_WEBAPIEntities();
+        //[HttpDelete]
+        //public IHttpActionResult EliminarLibro(int id)
+        //{
+        //    var db = new Models.Test_WEBAPIEntities();
 
-            var libro = db.Libros.FirstOrDefault(q => q.Id == id);
+        //    var libro = db.Libros.FirstOrDefault(q => q.Id == id);
 
-            if (libro == null)
-                return BadRequest("No se encontro libro con el id indicado");
+        //    if (libro == null)
+        //        return BadRequest("No se encontro libro con el id indicado");
 
-            db.Libros.Remove(libro);
+        //    db.Libros.Remove(libro);
 
-            var res = db.SaveChanges();
+        //    var res = db.SaveChanges();
 
-            if (res > 0)
-                return Ok("Se elimino correctamente");
+        //    if (res > 0)
+        //        return Ok("Se elimino correctamente");
 
-            return BadRequest("No se pudo eliminar el elemento");
-        }
+        //    return BadRequest("No se pudo eliminar el elemento");
+        //}
 
 
 
